@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Sparkles } from 'lucide-react';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -26,55 +27,26 @@ const Navbar = () => {
           : 'bg-white/80 backdrop-blur-md py-5'
       }`}
     >
-      <div className="container-custom flex items-center justify-between">
+      <div className="container-custom flex items-center justify-center">
         <Link 
           to="/" 
-          className="font-heading text-xl font-semibold tracking-tight"
+          className="group flex items-center gap-2 text-center"
         >
-          Gallery
+          <Sparkles 
+            className="text-primary h-5 w-5 animate-pulse" 
+            strokeWidth={1.5} 
+          />
+          <span className="font-heading text-2xl font-semibold tracking-tight relative">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70 animate-slide-up opacity-0" style={{ animationDelay: '0.1s', animationFillMode: 'forwards' }}>
+              Project Gallery
+            </span>
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary rounded-full group-hover:w-full transition-all duration-500 ease-custom-bezier"></span>
+          </span>
+          <Sparkles 
+            className="text-primary h-5 w-5 animate-pulse" 
+            strokeWidth={1.5} 
+          />
         </Link>
-        
-        <nav className="hidden md:flex items-center space-x-8">
-          <Link 
-            to="/" 
-            className="text-sm font-medium hover:text-primary/80 transition-colors"
-          >
-            All Projects
-          </Link>
-          <a 
-            href="/#about" 
-            className="text-sm font-medium hover:text-primary/80 transition-colors"
-          >
-            About
-          </a>
-          <a 
-            href="/#contact" 
-            className="text-sm font-medium hover:text-primary/80 transition-colors"
-          >
-            Contact
-          </a>
-        </nav>
-        
-        <button 
-          className="md:hidden p-2 rounded-md hover:bg-accent transition-colors"
-          aria-label="Menu"
-        >
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            width="24" 
-            height="24" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round"
-          >
-            <line x1="4" x2="20" y1="12" y2="12"/>
-            <line x1="4" x2="20" y1="6" y2="6"/>
-            <line x1="4" x2="20" y1="18" y2="18"/>
-          </svg>
-        </button>
       </div>
     </header>
   );
