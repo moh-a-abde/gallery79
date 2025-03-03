@@ -10,15 +10,8 @@ const ProjectDetails = () => {
   const [project, setProject] = useState<Project | null>(null);
   const [relatedProjects, setRelatedProjects] = useState<Project[]>([]);
   const [activeImage, setActiveImage] = useState<string>('');
-  // Create a ref to track the latest active image to prevent race conditions
-  const activeImageRef = React.useRef<string>('');
   const [loading, setLoading] = useState(true);
   const [lightboxOpen, setLightboxOpen] = useState(false);
-  
-  // Keep the ref in sync with state
-  React.useEffect(() => {
-    activeImageRef.current = activeImage;
-  }, [activeImage]);
 
   useEffect(() => {
     if (id) {
@@ -47,15 +40,8 @@ const ProjectDetails = () => {
     console.log('Changing image from', activeImage, 'to:', image);
     
     try {
-      // Set activeImage state and update the ref
+      // Set active image directly first for immediate feedback
       setActiveImage(image);
-      activeImageRef.current = image;
-      
-      // Make sure the container element knows which image is active
-      const mainImageContainer = document.querySelector('.w-full.aspect-video');
-      if (mainImageContainer) {
-        mainImageContainer.setAttribute('data-current-image', image);
-      }
       
       // Add a visual feedback for the click - using a safer approach
       const clickedButton = document.querySelector(`[data-image="${CSS.escape(image)}"]`);
@@ -78,7 +64,6 @@ const ProjectDetails = () => {
       console.error('Error changing image:', error);
       // Fallback - just set the image directly
       setActiveImage(image);
-      activeImageRef.current = image;
     }
   };
 
@@ -160,10 +145,9 @@ const ProjectDetails = () => {
               <div className="relative">
                 <div className="w-full aspect-video rounded-xl overflow-hidden bg-muted mb-4 border border-white/5 shadow-xl group cursor-pointer" 
                   onClick={() => {
-                    // Only open the lightbox, don't change the image
+                    // Just open the lightbox without changing the image
                     toggleLightbox();
                   }}
-                  data-current-image={activeImage}
                 >
                   <div className="absolute inset-0 bg-grid-pattern opacity-10 mix-blend-overlay z-10"></div>
                   <img 
@@ -202,7 +186,6 @@ const ProjectDetails = () => {
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
-                        // Make sure we're only changing the image, not enlarging it
                         handleImageChange(image);
                       }}
                       data-image={image}
@@ -220,16 +203,21 @@ const ProjectDetails = () => {
                         src={image} 
                         alt={`${project.title} ${index + 1}`}
                         className={`w-full h-full object-cover transition-all duration-300 ${activeImage !== image ? 'filter brightness-75' : ''}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          handleImageChange(image);
+                        }}
                       />
                       
                       {/* Hover overlay for thumbnails - Make more prominent */}
                       <div className={`absolute inset-0 bg-gradient-to-b from-primary/30 via-primary/20 to-primary/10 opacity-0 group-hover/thumbnail:opacity-100 transition-opacity duration-300 flex items-center justify-center`}>
                         <div className="flex flex-col items-center justify-center">
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white mb-1 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7l6.1-4.3a2 2 0 012.4 0L16.5 7" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                           </svg>
-                          <div className="text-white text-xs font-medium px-2 py-1 bg-black/60 rounded-full backdrop-blur-sm">Switch Image</div>
+                          <div className="text-white text-xs font-medium px-2 py-1 bg-black/60 rounded-full backdrop-blur-sm">Click me</div>
                         </div>
                       </div>
                       
@@ -240,27 +228,16 @@ const ProjectDetails = () => {
                       
                       {/* Click-to-enlarge option for individual thumbnails */}
                       <div 
-                        className="absolute bottom-1 right-1 bg-black/70 text-white p-1 rounded cursor-pointer hover:bg-primary/80"
+                        className="absolute bottom-1 left-1 bg-black/70 text-white p-1 rounded z-20 cursor-pointer hover:bg-primary/80"
                         onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
-                          
-                          // Store this specific image to ensure we remember which one to view
-                          const imageToShow = image;
-                          
-                          // First explicitly set the active image
-                          setActiveImage(imageToShow);
-                          
-                          // Then open lightbox after a small delay, using the ref for reliability
-                          setTimeout(() => {
-                            // Double check that it's still the image we want before opening lightbox
-                            if (activeImageRef.current === imageToShow) {
-                              toggleLightbox();
-                            }
-                          }, 100);
+                          // First change the image
+                          handleImageChange(image);
+                          // Then open lightbox after a small delay to ensure image is changed
+                          setTimeout(() => toggleLightbox(), 50);
                         }}
                         title="Enlarge this image"
-                        style={{ zIndex: 5 }}
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
