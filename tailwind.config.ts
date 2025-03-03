@@ -53,6 +53,13 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 			},
+			backgroundImage: {
+				'grid-pattern': 'linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)',
+				'radial-gradient': 'radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%)'
+			},
+			backgroundSize: {
+				'grid-pattern': '20px 20px',
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
@@ -89,12 +96,30 @@ export default {
 				},
 				'pulse-glow': {
 					'0%, 100%': { 
-						opacity: 1,
+						opacity: '1',
 						boxShadow: '0 0 8px 2px rgba(147, 112, 219, 0.3)' 
 					},
 					'50%': { 
-						opacity: 0.7,
+						opacity: '0.7',
 						boxShadow: '0 0 12px 4px rgba(147, 112, 219, 0.5)' 
+					}
+				},
+				'gradient-x': {
+					'0%, 100%': {
+						'background-size': '200% 200%',
+						'background-position': 'left center'
+					},
+					'50%': {
+						'background-size': '200% 200%',
+						'background-position': 'right center'
+					}
+				},
+				'pulse-subtle': {
+					'0%, 100%': {
+						opacity: '1'
+					},
+					'50%': {
+						opacity: '0.85'
 					}
 				}
 			},
@@ -106,7 +131,9 @@ export default {
 				'slide-up': 'slide-up 0.6s ease-out forwards',
 				'slide-down': 'slide-down 0.6s ease-out forwards',
 				'float-slow': 'float-slow 5s ease-in-out infinite',
-				'pulse-glow': 'pulse-glow 3s ease-in-out infinite'
+				'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
+				'gradient-x': 'gradient-x 10s ease-in-out infinite',
+				'pulse-subtle': 'pulse-subtle 3s ease-in-out infinite'
 			},
 			fontFamily: {
 				sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -120,7 +147,8 @@ export default {
 				'card': '0 4px 20px rgba(0, 0, 0, 0.07)',
 				'elevation': '0 10px 30px rgba(0, 0, 0, 0.1)',
 				'purple-glow': '0 4px 20px rgba(147, 112, 219, 0.25)',
-				'purple-glow-lg': '0 8px 30px rgba(147, 112, 219, 0.35)'
+				'purple-glow-lg': '0 8px 30px rgba(147, 112, 219, 0.35)',
+				'glow': '0 0 8px 2px rgba(var(--primary), 0.25)'
 			}
 		}
 	},
