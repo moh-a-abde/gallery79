@@ -23,8 +23,8 @@ const Navbar = () => {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-white/90 backdrop-blur-lg shadow-sm py-4' 
-          : 'bg-white/80 backdrop-blur-md py-5'
+          ? 'bg-background/90 backdrop-blur-lg shadow-purple-glow py-4' 
+          : 'bg-background/50 backdrop-blur-md py-5'
       }`}
     >
       <div className="container-custom flex items-center justify-center">

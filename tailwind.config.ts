@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -83,6 +82,20 @@ export default {
 				'slide-down': {
 					'0%': { transform: 'translateY(-20px)', opacity: '0' },
 					'100%': { transform: 'translateY(0)', opacity: '1' }
+				},
+				'float-slow': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				'pulse-glow': {
+					'0%, 100%': { 
+						opacity: 1,
+						boxShadow: '0 0 8px 2px rgba(147, 112, 219, 0.3)' 
+					},
+					'50%': { 
+						opacity: 0.7,
+						boxShadow: '0 0 12px 4px rgba(147, 112, 219, 0.5)' 
+					}
 				}
 			},
 			animation: {
@@ -91,7 +104,9 @@ export default {
 				'fade-in': 'fade-in 0.4s ease-out forwards',
 				'fade-out': 'fade-out 0.4s ease-out forwards',
 				'slide-up': 'slide-up 0.6s ease-out forwards',
-				'slide-down': 'slide-down 0.6s ease-out forwards'
+				'slide-down': 'slide-down 0.6s ease-out forwards',
+				'float-slow': 'float-slow 5s ease-in-out infinite',
+				'pulse-glow': 'pulse-glow 3s ease-in-out infinite'
 			},
 			fontFamily: {
 				sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -103,7 +118,9 @@ export default {
 			boxShadow: {
 				'subtle': '0 2px 10px rgba(0, 0, 0, 0.05)',
 				'card': '0 4px 20px rgba(0, 0, 0, 0.07)',
-				'elevation': '0 10px 30px rgba(0, 0, 0, 0.1)'
+				'elevation': '0 10px 30px rgba(0, 0, 0, 0.1)',
+				'purple-glow': '0 4px 20px rgba(147, 112, 219, 0.25)',
+				'purple-glow-lg': '0 8px 30px rgba(147, 112, 219, 0.35)'
 			}
 		}
 	},
