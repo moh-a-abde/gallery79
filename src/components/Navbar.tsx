@@ -22,8 +22,8 @@ const Navbar = () => {
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-white/80 backdrop-blur-lg shadow-sm py-4' 
-          : 'bg-transparent py-6'
+          ? 'bg-white/90 backdrop-blur-lg shadow-sm py-4' 
+          : 'bg-white/80 backdrop-blur-md py-5'
       }`}
     >
       <div className="container-custom flex items-center justify-between">
@@ -31,7 +31,7 @@ const Navbar = () => {
           to="/" 
           className="font-heading text-xl font-semibold tracking-tight"
         >
-          Portfolio.
+          Gallery
         </Link>
         
         <nav className="hidden md:flex items-center space-x-8">
@@ -39,27 +39,21 @@ const Navbar = () => {
             to="/" 
             className="text-sm font-medium hover:text-primary/80 transition-colors"
           >
-            Projects
+            All Projects
           </Link>
-          <Link 
-            to="/#about" 
+          <a 
+            href="/#about" 
             className="text-sm font-medium hover:text-primary/80 transition-colors"
           >
             About
-          </Link>
-          <Link 
-            to="/#contact" 
+          </a>
+          <a 
+            href="/#contact" 
             className="text-sm font-medium hover:text-primary/80 transition-colors"
           >
             Contact
-          </Link>
+          </a>
         </nav>
-        
-        <button 
-          className="hidden md:flex btn-primary px-4 py-2"
-        >
-          Get in Touch
-        </button>
         
         <button 
           className="md:hidden p-2 rounded-md hover:bg-accent transition-colors"

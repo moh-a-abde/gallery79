@@ -24,11 +24,11 @@ const FilterBar: React.FC<FilterBarProps> = ({
   };
 
   return (
-    <div className="w-full bg-white border-b border-border sticky top-[72px] z-30 py-4">
+    <div className="w-full bg-white/70 backdrop-blur-sm border-y border-border sticky top-[72px] z-30 py-4">
       <div className="container-custom">
         <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-sm font-medium">Categories:</span>
+            <span className="text-sm font-medium text-muted-foreground">View:</span>
             <button
               className={`chip ${
                 selectedCategory === 'All'
@@ -55,7 +55,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
           </div>
           
           <div className="md:ml-auto flex flex-wrap items-center gap-2">
-            <span className="text-sm font-medium">Filter:</span>
+            <span className="text-sm font-medium text-muted-foreground">Filter:</span>
             {tags.slice(0, 6).map((tag) => (
               <button
                 key={tag}

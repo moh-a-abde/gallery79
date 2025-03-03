@@ -28,7 +28,15 @@ const ProjectGrid: React.FC = () => {
   }, [selectedCategory, selectedTags]);
 
   return (
-    <section className="pb-20">
+    <section className="py-8">
+      <div className="container-custom mb-8">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4">Project Gallery</h1>
+        <p className="text-muted-foreground max-w-2xl">
+          A curated collection of projects showcasing attention to detail, 
+          thoughtful design, and technical excellence.
+        </p>
+      </div>
+      
       <FilterBar
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
