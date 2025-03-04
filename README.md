@@ -1,6 +1,6 @@
 # Gallery79 - My Digital Gallery
 <p align="center">
-![Gallery79 Logo](/public/gallery-icon.svg)
+   <img src="/public/gallery-icon.svg" alt="Gallery79 Logo" width="150"/>
 </p>
 A curated collection of projects showcasing attention to detail, thoughtful design, and technical excellence.
 
