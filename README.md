@@ -1,4 +1,4 @@
-# Gallery79 - Crafting Digital Experiences with Precision & Purpose
+# Gallery79 - My Digital Gallery
 
 ![Gallery79 Logo](/public/gallery-icon.svg)
 
