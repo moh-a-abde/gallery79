@@ -1,7 +1,7 @@
 # Gallery79 - My Digital Gallery
-
+<p align="center">
 ![Gallery79 Logo](/public/gallery-icon.svg)
-
+</p>
 A curated collection of projects showcasing attention to detail, thoughtful design, and technical excellence.
 
 ## Project Overview
