@@ -46,7 +46,7 @@ const Navbar = () => {
         >
           <div className="h-8 w-8 relative transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
             <img 
-              src="/gallery79-icon.svg" 
+              src="/gallery79/gallery79-icon.svg" // huh
               alt="Gallery79 Logo" 
               className="w-full h-full object-contain filter drop-shadow-lg animate-rotate-in"
               style={{ animationDelay: '0.1s' }}
