@@ -256,7 +256,7 @@ const ProjectDetails = () => {
             </div>
             
             <div className="bg-card/30 backdrop-blur-md rounded-xl border border-white/5 p-6 shadow-lg">
-              <h1 className="text-3xl font-bold mb-3 bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">{project.title}</h1>
+              <h1 className="text-3xl font-bold mb-3 text-foreground">{project.title}</h1>
               
               <div className="flex flex-wrap gap-2 mb-6">
                 {project.tags.map((tag) => (
@@ -269,12 +269,12 @@ const ProjectDetails = () => {
                 ))}
               </div>
               
-              <div className="prose prose-sm max-w-none mb-8 text-foreground/90 leading-relaxed bg-black/5 p-4 rounded-lg border border-white/5">
+              <div className="prose prose-sm max-w-none mb-8 text-foreground leading-relaxed bg-card/20 p-4 rounded-lg border border-border/10">
                 {project.description}
               </div>
               
-              <div className="space-y-3 mb-8 bg-white/5 rounded-lg p-4">
-                <h3 className="text-sm font-semibold text-white/80 mb-2 uppercase tracking-wider">Project Details</h3>
+              <div className="space-y-3 mb-8 bg-card/20 rounded-lg p-4">
+                <h3 className="text-sm font-semibold text-foreground mb-2 uppercase tracking-wider">Project Details</h3>
                 
                 <div className="flex justify-between py-2.5 border-b border-border/30">
                   <span className="font-medium text-muted-foreground">Category</span>
@@ -372,7 +372,7 @@ const ProjectDetails = () => {
           {relatedProjects.length > 0 && (
             <div className="mt-20">
               <div className="flex items-center justify-between mb-10">
-                <h2 className="text-2xl font-bold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+                <h2 className="text-2xl font-bold text-foreground">
                   Related Projects
                 </h2>
                 <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border/40 to-transparent ml-6"></div>

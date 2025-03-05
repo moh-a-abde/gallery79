@@ -1,5 +1,6 @@
 import React from 'react';
 import { categories, tags } from '../lib/projects';
+import { useTheme } from '../lib/ThemeContext';
 
 interface FilterBarProps {
   selectedCategory: string;
@@ -14,6 +15,8 @@ const FilterBar: React.FC<FilterBarProps> = ({
   selectedTags,
   setSelectedTags,
 }) => {
+  const { mode } = useTheme();
+  
   const handleTagToggle = (tag: string) => {
     if (selectedTags.includes(tag)) {
       setSelectedTags(selectedTags.filter((t) => t !== tag));
@@ -37,7 +40,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
                 className={`chip ${
                   selectedCategory === 'All'
                     ? 'chip-gradient text-white'
-                    : 'chip-gradient-inactive text-secondary-foreground hover:text-white'
+                    : 'chip-gradient-inactive hover:text-white'
                 } transition-all duration-300 animate-fade-in opacity-0`}
                 style={{ animationDelay: '0.85s', animationFillMode: 'forwards' }}
                 onClick={() => setSelectedCategory('All')}
@@ -50,7 +53,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
                   className={`chip ${
                     selectedCategory === category
                       ? 'chip-gradient text-white'
-                      : 'chip-gradient-inactive text-secondary-foreground hover:text-white'
+                      : `chip-gradient-inactive ${mode === 'light' ? 'text-gray-700' : 'text-gray-200'} hover:text-white`
                   } transition-all duration-300 animate-fade-in opacity-0`}
                   style={{ animationDelay: `${0.9 + index * 0.05}s`, animationFillMode: 'forwards' }}
                   onClick={() => setSelectedCategory(category)}
@@ -68,7 +71,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
                   className={`chip ${
                     selectedTags.includes(tag)
                       ? 'chip-gradient text-white'
-                      : 'chip-gradient-inactive text-secondary-foreground hover:text-white'
+                      : `chip-gradient-inactive ${mode === 'light' ? 'text-gray-700' : 'text-gray-200'} hover:text-white`
                   } transition-all duration-300 animate-fade-in opacity-0`}
                   style={{ animationDelay: `${1.15 + index * 0.05}s`, animationFillMode: 'forwards' }}
                   onClick={() => handleTagToggle(tag)}

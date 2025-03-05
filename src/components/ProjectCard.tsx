@@ -213,7 +213,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
       </div>
       
       {project.featured && (
-        <div className="absolute top-3 right-3 bg-gradient-to-r from-purple-600/90 to-purple-500/90 text-white text-xs px-4 py-1 rounded-full backdrop-blur-md shadow-md z-20 font-medium border border-purple-400/30 animate-pulse-subtle">
+        <div className="absolute top-3 right-3 bg-gradient-to-r from-primary/90 to-primary/80 text-white text-xs px-4 py-1 rounded-full backdrop-blur-md shadow-md z-20 font-medium border border-primary/30 animate-pulse-subtle">
           Featured
         </div>
       )}

@@ -2,16 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Project, projects } from '../lib/projects';
 import ProjectCard from './ProjectCard';
 import FilterBar from './FilterBar';
+import { Sparkles } from 'lucide-react';
 
 const ProjectGrid: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [filteredProjects, setFilteredProjects] = useState<Project[]>(projects);
-  const [isAnimating, setIsAnimating] = useState(false);
-
+  
   useEffect(() => {
-    setIsAnimating(true);
-    
     // Create a slight delay to allow for animation effects
     const timeoutId = setTimeout(() => {
       let filtered = [...projects];
@@ -29,11 +27,6 @@ const ProjectGrid: React.FC = () => {
       }
       
       setFilteredProjects(filtered);
-      
-      // Reset animation state after filter is applied
-      setTimeout(() => {
-        setIsAnimating(false);
-      }, 100);
     }, 300);
     
     return () => clearTimeout(timeoutId);
@@ -41,11 +34,13 @@ const ProjectGrid: React.FC = () => {
 
   return (
     <section className="py-8">
-      <div className="container-custom mb-8">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-2xl font-medium mb-4 animate-fade-in-up opacity-0" 
-              style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
-            All Projects
+      <div className="container-custom mb-10">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="inline-block text-xl font-medium px-2 py-2 relative">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/90 animate-pulse">
+              All Projects
+            </span>
+            <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-70"></div>
           </h2>
         </div>
       </div>
@@ -57,12 +52,11 @@ const ProjectGrid: React.FC = () => {
         setSelectedTags={setSelectedTags}
       />
       
-      <div className="container-custom pt-10">
-        <div 
-          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 transition-opacity duration-300 ${
-            isAnimating ? 'opacity-50' : 'opacity-100'
-          }`}
-        >
+      <div className="container-custom pt-10 relative">
+        {/* Elegant gradient glow behind the project grid */}
+        <div className="absolute -inset-4 -z-10 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 rounded-3xl blur-3xl opacity-30"></div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {filteredProjects.length > 0 ? (
             filteredProjects.map((project, index) => (
               <div 

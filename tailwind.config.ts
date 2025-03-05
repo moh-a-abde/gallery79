@@ -122,6 +122,14 @@ export default {
 					'50%': {
 						opacity: '0.85'
 					}
+				},
+				'pulse-slow': {
+					'0%, 100%': {
+						opacity: '0.3'
+					},
+					'50%': {
+						opacity: '0.6'
+					}
 				}
 			},
 			animation: {
@@ -134,11 +142,13 @@ export default {
 				'float-slow': 'float-slow 5s ease-in-out infinite',
 				'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
 				'gradient-x': 'gradient-x 10s ease-in-out infinite',
-				'pulse-subtle': 'pulse-subtle 3s ease-in-out infinite'
+				'pulse-subtle': 'pulse-subtle 3s ease-in-out infinite',
+				'pulse-slow': 'pulse-slow 4s ease-in-out infinite'
 			},
 			fontFamily: {
 				sans: ['Inter', 'system-ui', 'sans-serif'],
-				heading: ['SF Pro Display', 'Inter', 'system-ui', 'sans-serif']
+				heading: ['Space Grotesk', 'system-ui', 'sans-serif'],
+				accent: ['Playfair Display', 'serif']
 			},
 			transitionTimingFunction: {
 				'custom-bezier': 'cubic-bezier(0.16, 1, 0.3, 1)'
@@ -147,8 +157,8 @@ export default {
 				'subtle': '0 2px 10px rgba(0, 0, 0, 0.05)',
 				'card': '0 4px 20px rgba(0, 0, 0, 0.07)',
 				'elevation': '0 10px 30px rgba(0, 0, 0, 0.1)',
-				'purple-glow': '0 4px 20px rgba(147, 112, 219, 0.25)',
-				'purple-glow-lg': '0 8px 30px rgba(147, 112, 219, 0.35)',
+				'purple-glow': '0 4px 20px rgba(165, 83, 255, 0.25)',
+				'purple-glow-lg': '0 8px 30px rgba(165, 83, 255, 0.35)',
 				'glow': '0 0 8px 2px rgba(var(--primary), 0.25)'
 			}
 		}
