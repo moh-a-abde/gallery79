@@ -34,7 +34,7 @@ const ProjectGrid: React.FC = () => {
 
   return (
     <section className="py-8">
-      <div className="container-custom mb-10">
+      <div className="container-custom mb-10">``
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="inline-block text-xl font-medium px-2 py-2 relative">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/90 animate-pulse">
